@@ -52,7 +52,6 @@ export function addEnemy() {
 		addClass(btn, 'remove');
 
 		playNote(392, 293.66, 0, .3, 'sawtooth', .5, .01, .3, .2, .1);
-		//playNote(noteA = 440, noteB = false, delay = 0, duration = 1, type = 'sine', vol = 1, attack = .01, decay = .1, sustain = .6, release = .1)
 	});
 
 	// bind animations

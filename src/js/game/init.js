@@ -5,6 +5,7 @@ import {matchOrbs} from './matchOrbs';
 import {startGame} from './startGame';
 import {pauseGame} from './pauseGame';
 import {resumeGame} from './resumeGame';
+import {refreshOrbIndexes} from './refreshOrbIndexes';
 import {scheduleAddEnemy} from './scheduleAddEnemy';
 import {updateColorValues} from './updateColorValues';
 
