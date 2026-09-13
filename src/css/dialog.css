@@ -14,7 +14,7 @@ dialog {
 }
 
 dialog.narrow {
-	width: 300px;
+	width: 360px;
 }
 
 dialog:before {
@@ -55,9 +55,32 @@ dialog:open::backdrop {
 	}
 }
 
+dialog h1 {
+	margin: 0 0 .5rem;
+	font-size: 1.75rem;
+	color: #fff;
+	text-align: center;
+}
+
 dialog .content {
 	color: #fff;
 	text-align: center;
+}
+
+dialog footer {
+	margin-top: .75rem;
+	color: #fff;
+	text-align: center;
+}
+
+dialog a {
+	color: #77f;
+	text-decoration: none;
+	transition: .3s;
+}
+
+dialog a:is(:hover, :focus) {
+	color: #ccf;
 }
 
 @media (orientation: portrait) or (height < 480px) {
