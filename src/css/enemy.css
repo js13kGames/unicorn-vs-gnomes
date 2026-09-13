@@ -1,0 +1,195 @@
+.enemy-list {
+	display: grid;
+	grid: repeat(3, 1fr) / repeat(2, 1fr);
+	gap: 10px;
+}
+
+.enemy {
+	/*
+	--c
+	--bg
+	--asp
+	--aDelay
+	*/
+	display: flex;
+	flex-direction: column;
+	border: none;
+	background: none;
+	width: 100%;
+	height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.enemy:before {
+	content: '';
+	display: block;
+	flex: 1;
+	background: no-repeat bottom center / contain;
+	background-image: var(--bg);
+	transform-origin: bottom center;
+    animation: .5s ease-in enemy-appear;
+}
+
+.enemy span:before {
+	content: '';
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--c);
+	border: 1px solid black;
+}
+
+.enemy span:after {
+	content: 'x' var(--hp);
+}
+
+.enemy.attack {
+	animation: var(--asp) ease-in var(--aDelay) infinite enemy-attack;
+}
+
+.enemy.remove {
+	animation: .2s ease-in forwards enemy-remove;
+}
+
+.enemy.remove:before {
+	animation: .2s ease-in forwards enemy-sprite-remove;
+}
+
+.game:is(.paused, .game-over) .enemy {
+	animation-play-state: paused;
+}
+
+.enemy[t='gnome'] {
+	--asp: 5s;
+	--aDelay: 10s;
+	--hp: '1';
+	--bg: var(--gnome);
+}
+
+.enemy[t='thief'] {
+	--asp: 3s;
+	--aDelay: 5s;
+	--hp: '1';
+	--bg: var(--gnome-bag), var(--gnome);
+}
+
+.enemy[t='warrior'] {
+	--asp: 4s;
+	--aDelay: 8s;
+	--hp: '2';
+	--bg: var(--gnome-shield-1), var(--gnome), var(--gnome-spear);
+}
+
+.enemy[t='knight'] {
+	--asp: 6s;
+	--aDelay: 10s;
+	--hp: '4';
+	--bg: var(--gnome-shield-2), var(--gnome), var(--gnome-sword);
+}
+
+.enemy[t='wizzard'] {
+	--asp: 6s;
+	--aDelay: 10s;
+	--hp: '3';
+	--bg: var(--gnome-beard), var(--gnome), var(--gnome-staff);
+}
+
+/*color*/
+.enemy[c="red"] {
+    --c: red;
+}
+.enemy[c="orange"] {
+    --c: orange;
+}
+.enemy[c="yellow"] {
+    --c: yellow;
+}
+.enemy[c="green"] {
+    --c: green;
+}
+.enemy[c="blue"] {
+    --c: blue;
+}
+.enemy[c="purple"] {
+    --c: purple;
+}
+/*color end*/
+
+@keyframes enemy-appear {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes enemy-attack {
+	0% {
+		transform: translateX(0);
+	}
+
+	75% {
+		transform: translateX(0);
+	}
+
+	80% {
+		transform: translateX(10%);
+	}
+
+	90% {
+		transform: translateX(-15%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes enemy-remove {
+	0% {
+		opacity: 1;
+	}
+
+	66% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes enemy-sprite-remove {
+	0% {
+		opacity: 1;
+		transform: translate(0, 0) rotate(0);
+	}
+
+	10% {
+		transform: translate(0, 0) rotate(8deg);
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate(50%, -25%) rotate(80deg);
+	}
+}
+
+@media (orientation: portrait) {
+	.enemy-list {
+		grid: repeat(2, 1fr) / repeat(3, 1fr);
+		gap: 5px;
+	}
+}

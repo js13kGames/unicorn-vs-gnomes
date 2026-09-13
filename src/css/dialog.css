@@ -1,0 +1,67 @@
+dialog {
+	width: 900px;
+	max-width: calc(100svw - 30px);
+	max-height: 100svh;
+	overflow: visible;
+	padding: 20px;
+	border: 3px solid;
+	border-image:radial-gradient(#fedb37 50%, #8a6e2f) 1;
+	background: var(--marble) repeat center / cover;
+	background-color: #333;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: all 0.5s allow-discrete;
+}
+
+dialog.narrow {
+	width: 300px;
+}
+
+dialog:before {
+	content: '';
+	display: block;
+	position: absolute;
+	inset: -6px;
+	background: no-repeat;
+	background-image: var(--gem), var(--gem), var(--gem), var(--gem);
+	background-position: top left, top right, bottom right, bottom left;
+	pointer-events: none;
+}
+
+dialog:open {
+	opacity: 1;
+	transform: translateY(0%);
+}
+
+@starting-style {
+	dialog:open {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+}
+
+dialog::backdrop {
+	background-color: transparent;
+	transition: all 0.5s allow-discrete;
+}
+
+dialog:open::backdrop {
+  background-color: rgb(0 0 0 / 60%);
+}
+
+@starting-style {
+	dialog:open::backdrop {
+		background-color: transparent;
+	}
+}
+
+dialog .content {
+	color: #fff;
+	text-align: center;
+}
+
+@media (orientation: portrait) or (height < 480px) {
+	dialog {
+		padding: 5px;
+	}
+}

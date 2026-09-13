@@ -1,0 +1,15 @@
+.unicorn {
+	--bg: var(--unicorn-eye-angry), var(--unicorn-body);
+	
+	width: 100%;
+	flex: 1;
+	background: no-repeat center bottom / contain;
+	background-image: var(--bg);
+	transform: scaleX(-1);
+}
+
+@media (orientation: portrait) {
+	.unicorn {
+		display: none;
+	}
+}

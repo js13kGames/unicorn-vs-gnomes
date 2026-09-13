@@ -1,0 +1,59 @@
+@property --btn-cp1 {
+	syntax: '<length-percentage>';
+	initial-value: 0%;
+	inherits: false
+}
+
+@property --btn-cp2 {
+	syntax: '<length-percentage>';
+	initial-value: 50%;
+	inherits: false
+}
+
+@property --btn-cp3 {
+	syntax: '<length-percentage>';
+	initial-value: 100%;
+	inherits: false
+}
+
+.btn {
+	--btn-cp1: 0%;
+	--btn-cp2: 50%;
+
+	margin: 5px;
+	padding: 10px;
+	background: radial-gradient(farthest-corner circle at 25% 25%,#6060ff var(--btn-cp1), #228 var(--btn-cp2), #005);
+	border: 3px solid;
+	border-image: radial-gradient(#fedb37 50%, #8a6e2f) 1;
+	box-shadow: 0 0 10px 2px #6060ff inset;
+	position: relative;
+	transition: all .3s, --btn-cp1 .3s, --btn-cp2 .3s;
+	color: #fff;
+	font-family: sans-serif;
+}
+
+.btn:is(:hover, :focus) {
+	--btn-cp1: 20%;
+	--btn-cp2: 90%;
+}
+
+.btn:before {
+	content: '';
+	display: block;
+	position: absolute;
+	inset: -6px;
+	background: no-repeat;
+	background-image: var(--gem), var(--gem), var(--gem), var(--gem);
+	background-position: top left, top right, bottom right, bottom left;
+	pointer-events: none;
+}
+
+.btn.full {
+	width: calc(100% - 10px);
+}
+
+@media (orientation: portrait) or (height < 480px) {
+	.btn {
+		padding: 5px 10px;
+	}
+}

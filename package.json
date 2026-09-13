@@ -1,0 +1,35 @@
+{
+  "name": "js13k-2026-unicorn-vs-gnomes",
+  "version": "1.0.0",
+  "description": "Entry for js13kGames 2026",
+  "scripts": {
+    "dev": "vite dev --config config/vite.config.js",
+    "preview": "vite preview --config config/vite.config.js",
+    "lint": "eslint --config eslint.config.mjs",
+    "build-vite": "vite build --config config/vite.config.js",
+    "build-roadroller": "npx roadroller tmp/main.js -o tmp/main.roadrolled.js",
+    "build-js": "npm run build-vite && npm run build-roadroller",
+    "build-html": "node ./config/build-html.js",
+    "zip": "node ./config/zip.js",
+    "build": "npm run build-js && npm run build-html && npm run zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiserim/js13k-2026-unicorn-vs-gnomes.git"
+  },
+  "author": "Marcin Walczak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wiserim/js13k-2026-unicorn-vs-gnomes/issues"
+  },
+  "homepage": "https://github.com/wiserim/js13k-2026-unicorn-vs-gnomes#readme",
+  "devDependencies": {
+    "archiver": "^8.0.0",
+    "eslint": "^10.8.1",
+    "html-minifier-terser": "^7.2.0",
+    "roadroller": "^2.1.0",
+    "terser": "^5.50.0",
+    "vite": "^8.2.1",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Unicorn vs gnomes - js13k 2026 game</title>
+	<!--<link rel="stylesheet" href="src/css/main.css">-->
+</head>
+<body>
+    <div class="game game-over hide-game-area">
+        <!--game area-->
+        <div class="game-area">
+            <!--left section-->
+            <div class="left">
+                <div class="unicorn"></div>
+                <div class="panel">
+                    <div class="left-btns">
+                        <button class="btn" cmd="pause-game,open-menu">Menu</button>
+                        <button class="btn" cmd="match">Match</button>
+                        <button class="btn" cmd="refresh">Refresh</button>
+                    </div>
+                    <div class="progress" c="red"></div>
+                    <div class="progress" c="orange"></div>
+                    <div class="progress" c="yellow"></div>
+                    <div class="progress" c="green"></div>
+                    <div class="progress" c="blue"></div>
+                    <div class="progress" c="purple"></div>
+                </div>
+            </div>
+            <!--left section end-->
+            <!--board-->
+            <div class="center">
+                <div class="board-container">
+            	    <div class="board">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+            <!--board end-->
+            <!--right section-->
+            <div class="right enemy-list">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <!--right section-->
+        </div>
+        <!--game area end-->
+
+        <!--game over screen-->
+        <dialog id="menu-dialog" class="narrow">
+            <div class="content"></div>
+            <button class="btn full" cmd="resume-game,close-dialog">Resume</button>
+            <button class="btn full" cmd="start-game,close-dialog">New game</button>
+
+            <fieldset>
+                <legend>Confirm orb selection with:</legend>
+                <label class="radio">
+                    <input type="radio" id="option-orb-selection-btn" name="option-orb-selection" value="1" checked />
+                    Mouse / touch release
+                </label>
+                <label class="radio">
+                    <input type="radio" id="option-orb-selection-release" name="option-orb-selection" value="2" />
+                    Match button
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>SFX</legend>
+                <label class="radio">
+                    <input type="radio" id="option-sfx-on" name="option-sfx" value="1" checked />
+                    ON
+                </label>
+                <label class="radio">
+                    <input type="radio" id="option-sfx-off" name="option-sfx" value="0" />
+                    OFF
+                </label>
+            </fieldset>
+        </dialog>
+        <!--game menu end-->
+    </div>
+
+	<script type="module" src="src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+.progress {
+	--cValue: 0;
+	--cTargetValue: 30;
+
+	display: flex;
+	height: 1.5rem;
+	border: 3px solid transparent;
+	border-radius: 1rem;
+	font-size: .75rem;
+	color: #fff;
+	background: #000;
+	background-image: 
+		linear-gradient(#000), 
+        radial-gradient(#fedb37 50%, #8a6e2f);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+
+	overflow: hidden;
+	position: relative;
+
+	counter-reset: cTargetValue var(--cTargetValue);
+}
+
+/*color*/
+.progress[c="red"] {
+    --c: red;
+}
+.progress[c="orange"] {
+    --c: orange;
+}
+.progress[c="yellow"] {
+    --c: yellow;
+}
+.progress[c="green"] {
+    --c: green;
+}
+.progress[c="blue"] {
+    --c: blue;
+}
+.progress[c="purple"] {
+    --c: purple;
+}
+/*color end*/
+
+* + .progress {
+	margin-top: .25rem;
+}
+
+.progress:before {
+	content: '';
+	display: block;
+	width: calc(var(--cValue) / var(--cTargetValue) * 100%);
+	height: 100%;
+	background: var(--c);
+	border-radius: 1rem;
+	box-shadow:
+		0 .25rem .25rem #fffa inset,
+		0 -.25rem .25rem #000a inset;
+	transition: width .5s;
+}
+
+.progress:after {
+	counter-reset: cValue var(--cValue);
+	content: counter(cValue) '/' counter(cTargetValue);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+@media (orientation: portrait) or (height < 480px) {
+	.progress {
+		height: 1rem;
+		border-width: 2px;
+		font-size: .5rem;
+	}
+}

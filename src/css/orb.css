@@ -1,0 +1,90 @@
+.orb {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--c);
+    background: radial-gradient(circle at 40% 40%, hsl(from var(--c) h s calc(l * 1.5)), var(--c), hsl(from var(--c) h s calc(l * .6)) 100%);
+    border: 1px solid var(--c);
+    opacity: 1;
+
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    filter: grayscale(0);
+    transition: .3s;
+}
+
+.orb:before {
+    content: var(--i);
+    font-size: 50cqw;
+    line-height: 1;
+    text-box-trim: trim-both;
+    color: var(--c);
+    text-shadow: hsl(from var(--c) h s calc(l * .6));
+    background-color: hsl(from var(--c) h s calc(l * .6));
+    text-shadow: 0px 2px 5px hsl(from var(--c) h s calc(l * .8));
+    color: transparent;
+    background-clip: text;
+}
+
+.orb.selected {
+    border-color: hsl(from var(--c) h s calc(l * .6));
+    box-shadow: 0 0 10px #fffa;
+}
+
+.orb.disabled {
+    filter: grayscale(1);
+    pointer-events: none;
+    animation: 5s disable-orb;
+}
+
+.orb.remove {}
+
+/*color*/
+.orb[c="red"] {
+        --c: red;
+        --i: "❤"; /*HEAVY BLACK HEART*/
+    }
+.orb[c="orange"] {
+        --c: orange;
+        --i: "🔥"; /*FIRE*/
+    }
+.orb[c="yellow"] {
+        --c: yellow;
+        --i: "☀"; /*BLACK SUN WITH RAYS*/
+    }
+.orb[c="green"] {
+        --c: green;
+        --i: "☘"; /*SHAMROCK*/
+    }
+.orb[c="blue"] {
+        --c: blue;
+        --i: "🌧"; /*CLOUD*/
+    }
+.orb[c="purple"] {
+    --c: purple;
+    --i: "🌙"; /*CRESCENT MOON*/
+}
+/*color end*/
+
+/*disable orbs of diffent colors than selected*/
+.board[c="red"] .orb:not([c="red"]),
+.board[c="orange"] .orb:not([c="orange"]),
+.board[c="yellow"] .orb:not([c="yellow"]),
+.board[c="green"] .orb:not([c="green"]),
+.board[c="blue"] .orb:not([c="blue"]),
+.board[c="purple"] .orb:not([c="purple"]) {
+    opacity: .5;
+    pointer-events: none;
+}
+
+@keyframes disable-orb {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,2 +1,2 @@
-# js13k-2026-unicorn-vs-gnomes
-Entry for js13kGames 2026
+# js13k-2025-cat-fight
+Entry for js13kGames 2025

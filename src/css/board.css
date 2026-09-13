@@ -1,0 +1,135 @@
+.board-container {
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    aspect-ratio: 1;
+    margin: auto;
+    border: 3px solid;
+    border-image:radial-gradient(#fedb37 50%, #8a6e2f) 1;
+    position: relative;
+}
+
+.board-container:before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: -6px;
+    background: no-repeat;
+    background-image: var(--gem), var(--gem), var(--gem), var(--gem);
+    background-position: top left, top right, bottom right, bottom left;
+    pointer-events: none;
+}
+
+.board {
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    aspect-ratio: 1;
+    background: var(--marble) repeat center / cover;
+    background-color: #333;
+    display: flex;
+    align-items: end;
+    overflow : hidden;
+}
+
+/*columns*/
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: calc(100% / 6);
+    container-type: inline-size;
+}
+
+.col .item {
+    --dw: calc(100% + 4px); /*direction connector width: horizontal and vertical*/
+    --dr: 0; /*direction rotation*/
+
+    padding: 5px;
+    position: relative;
+}
+
+/*arrow direction*/
+.item:is(.dn, .dne, .de, .dse, .ds, .dsw, .dw, .dnw):after {
+    content: '';
+    display: block;
+    width: var(--dw);
+    height: 6px;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 3px center;
+    transform: translate(-3px, -50%) rotate(var(--dr));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/*diagonal direction connector width*/
+.item:is(.dne, .dse, .dsw, .dnw) {
+    --dw: calc((100% + 4px) * sqrt(2));
+}
+
+.item.dn {
+    --dr: -90deg;
+}
+
+.item.dne {
+    --dr: -45deg;
+}
+/*default direction*/
+/*
+.item.de {
+    --dr: 0deg;
+}
+*/
+
+.item.dse {
+    --dr: 45deg;
+}
+
+.item.ds {
+    --dr: 90deg;
+}
+
+.item.dsw {
+    --dr: 135deg;
+}
+
+.item.dw {
+    --dr: 180deg;
+}
+
+.item.dnw {
+    --dr: 225deg;
+}
+/*arrow direction*/
+
+.col .item:has(.orb.remove) {
+    animation: .5s ease-in forwards remove-item;
+}
+
+@keyframes remove-item {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        height: 100cqw;
+        opacity: 0;
+    }
+
+    100% {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@media (orientation: portrait) {
+    .board-container {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
