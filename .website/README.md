@@ -16,9 +16,9 @@ Gradually stronger gnomes will appear to steal your rainbow.
 Enemy types:
 - Gnome - typical gnome: small, slow and clumsy
 - Gnome thief - faster than normal gnome, steals colors from the board
-- Gnome warrior - stronger and harder enemy
+- Gnome warrior - stronger and tougher than regular gnome
 - Gnome knight - gnome elite warrior
-- Gnome wizzard - temporary freeze colors on board 
+- Gnome wizard - temporary freeze colors on board
 
 ## Controls
 Mouse / touchscreen
