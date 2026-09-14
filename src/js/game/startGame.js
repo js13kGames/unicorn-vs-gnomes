@@ -1,9 +1,9 @@
 import {fillBoard} from './fillBoard';
 import {refreshOrbIndexes} from './refreshOrbIndexes';
 import {updateColorValues} from './updateColorValues';
+
 import {el} from '../dom/el';
 import {removeClass} from '../dom/removeClass';
-//import {scheduleAddEnemy} from './scheduleAddEnemy';
 
 /**
  * @function

@@ -25,7 +25,7 @@ export function checkGameStatus() {
 	}
 	// win condition - all colors reach cTargetValue (30)
 	else if(minCValue >= cTargetValue) {
-		el('.content', 0, menuDialog).innerHtml('<h2>Rainbow restored</h2>');
+		el('.content', 0, menuDialog).innerHTML = '<h2>Rainbow restored</h2>';
 		addClass(game,'game-over');
 		addEnemyTimer.pause();
 		threatLevelTimer.pause();
